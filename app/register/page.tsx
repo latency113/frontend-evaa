@@ -76,66 +76,68 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-6 bg-white p-8 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 text-gray-900">
-      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-        <h5 className="text-xl font-medium text-gray-900 text-center mb-6">ลงทะเบียนผู้ใช้งานใหม่</h5>
-        
-        <Input 
-          label="ชื่อ-นามสกุล" 
-          placeholder="สมชาย ใจดี" 
-          {...register("name")}
-          error={errors.name?.message}
-        />
+    <div className="flex flex-col items-center justify-center min-h-[85vh] py-8">
+      <div className="max-w-xl w-full bg-white p-8 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 text-gray-900">
+        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+          <h5 className="text-xl font-medium text-gray-900 text-center mb-6">ลงทะเบียนผู้ใช้งานใหม่</h5>
+          
+          <Input 
+            label="ชื่อ-นามสกุล" 
+            placeholder="สมชาย ใจดี" 
+            {...register("name")}
+            error={errors.name?.message}
+          />
 
-        <div className="mb-4">
-          <label className="block mb-2 text-sm font-medium text-gray-900 text-left">แผนก</label>
-          <select 
-            {...register("departmentId")}
-            className={`bg-gray-50 border ${errors.departmentId ? "border-red-500" : "border-gray-300"} text-gray-900 rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500`}
-          >
-            <option value="">-- เลือกแผนก --</option>
-            {departments.map(dept => (
-              <option key={dept.id} value={dept.id}>{dept.name}</option>
-            ))}
-          </select>
-          {errors.departmentId && <p className="mt-2 text-sm text-red-600">{errors.departmentId.message}</p>}
-        </div>
-
-        <Input 
-          label="อีเมล" 
-          type="email" 
-          placeholder="name@company.com" 
-          {...register("email")}
-          error={errors.email?.message}
-        />
-
-        <Input 
-          label="รหัสผ่าน" 
-          type="password" 
-          placeholder="••••••••" 
-          {...register("password")}
-          error={errors.password?.message}
-        />
-
-        <div className="mb-6">
-          <label className="block mb-2 text-sm font-medium text-gray-900 text-left">บทบาท (Role)</label>
-          <div className="flex gap-4">
-            <label className="flex items-center gap-2">
-              <input type="radio" value="EVALUATOR" {...register("role")} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" />
-              <span>ผู้ประเมิน (EVALUATOR)</span>
-            </label>
-            <label className="flex items-center gap-2">
-              <input type="radio" value="EVALUATEE" {...register("role")} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" />
-              <span>ผู้รับการประเมิน (EVALUATEE)</span>
-            </label>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-900 text-left">แผนก</label>
+            <select 
+              {...register("departmentId")}
+              className={`bg-gray-50 border ${errors.departmentId ? "border-red-500" : "border-gray-300"} text-gray-900 rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500`}
+            >
+              <option value="">-- เลือกแผนก --</option>
+              {departments.map(dept => (
+                <option key={dept.id} value={dept.id}>{dept.name}</option>
+              ))}
+            </select>
+            {errors.departmentId && <p className="mt-2 text-sm text-red-600">{errors.departmentId.message}</p>}
           </div>
-          {errors.role && <p className="mt-2 text-sm text-red-600">{errors.role.message}</p>}
-        </div>
 
-        <Button type="submit" variant="primary" className="w-full" isLoading={loading}>
-          ลงทะเบียน
-        </Button>
-      </form>
+          <Input 
+            label="อีเมล" 
+            type="email" 
+            placeholder="name@company.com" 
+            {...register("email")}
+            error={errors.email?.message}
+          />
+
+          <Input 
+            label="รหัสผ่าน" 
+            type="password" 
+            placeholder="••••••••" 
+            {...register("password")}
+            error={errors.password?.message}
+          />
+
+          <div className="mb-6">
+            <label className="block mb-2 text-sm font-medium text-gray-900 text-left">บทบาท (Role)</label>
+            <div className="flex gap-4">
+              <label className="flex items-center gap-2">
+                <input type="radio" value="EVALUATOR" {...register("role")} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" />
+                <span>ผู้ประเมิน (EVALUATOR)</span>
+              </label>
+              <label className="flex items-center gap-2">
+                <input type="radio" value="EVALUATEE" {...register("role")} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" />
+                <span>ผู้รับการประเมิน (EVALUATEE)</span>
+              </label>
+            </div>
+            {errors.role && <p className="mt-2 text-sm text-red-600">{errors.role.message}</p>}
+          </div>
+
+          <Button type="submit" variant="primary" className="w-full" isLoading={loading}>
+            ลงทะเบียน
+          </Button>
+        </form>
+      </div>
     </div>
   );
 }

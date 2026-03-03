@@ -87,33 +87,35 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-white p-8 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
-      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-        <h5 className="text-xl font-medium text-gray-900 text-center">เข้าสู่ระบบ</h5>
-        
-        <Input 
-          label="อีเมล" 
-          type="email" 
-          placeholder="name@company.com" 
-          {...register("email")}
-          error={errors.email?.message}
-        />
+    <div className="flex flex-col items-center justify-center min-h-[70vh]">
+      <div className="max-w-md w-full bg-white p-8 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <h5 className="text-xl font-medium text-gray-900 text-center">เข้าสู่ระบบ</h5>
+          
+          <Input 
+            label="อีเมล" 
+            type="email" 
+            placeholder="name@company.com" 
+            {...register("email")}
+            error={errors.email?.message}
+          />
 
-        <Input 
-          label="รหัสผ่าน" 
-          type="password" 
-          placeholder="••••••••" 
-          {...register("password")}
-          error={errors.password?.message}
-        />
+          <Input 
+            label="รหัสผ่าน" 
+            type="password" 
+            placeholder="••••••••" 
+            {...register("password")}
+            error={errors.password?.message}
+          />
 
-        <Button type="submit" variant="primary" className="w-full" isLoading={loading}>
-          เข้าสู่ระบบ
-        </Button>
-        <div className="text-sm font-medium text-gray-500 text-center">
-          ยังไม่ได้ลงทะเบียน? <Link href="/register" className="text-blue-700 hover:underline">สร้างบัญชีผู้ใช้งาน</Link>
-        </div>
-      </form>
+          <Button type="submit" variant="primary" className="w-full" isLoading={loading}>
+            เข้าสู่ระบบ
+          </Button>
+          <div className="text-sm font-medium text-gray-500 text-center">
+            ยังไม่ได้ลงทะเบียน? <Link href="/register" className="text-blue-700 hover:underline">สร้างบัญชีผู้ใช้งาน</Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
